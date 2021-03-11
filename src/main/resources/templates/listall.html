@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="ISO-8859-1">
+	<title>All Data</title>
+	<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/css/bootstrap.min.css" />
+	<script type="text/javascript" src="/webjars/jquery/jquery.min.js"></script>
+	<script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</head>
+
+
+<body>
+<div class="container text-center">
+	<div>
+		<form th:action="@{/logout}" method="post">
+		<p>
+			
+			</p> 
+		</form>
+	</div>
+
+
+	<div>
+		<h1>All Users Data</h1>
+		<form th:action="@{/Search}">
+	 <input type="text" name="keyword" id="keyword" size="50" th:value="${keyword}" required />
+		&nbsp;
+		<input type="submit" value="Search" />
+		&nbsp;
+		<input type="button" value="Clear" id="btnClear" onclick="clearSearch()" />
+	</form>
+	</div>
+	<br>
+	<div>
+		<table class="table table-striped table-bordered">
+			<thead class="thead-dark">
+				<tr>
+					<th>User ID</th>
+					<th>E-mail</th>
+					<th>User Name</th>
+					<th>Address</th>
+					<th>PhoneNumber</th>
+					<th>Password</th>
+					<th>amount</th>
+					<th>townorcity</th>
+					<th>pincode</th>
+					<th>stateorregion</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="user: ${listUsers}">
+					<td th:text="${user.id}">User ID</td>
+					<td th:text="${user.email}">E-mail</td>
+					<td th:text="${user.firstName}">User Name</td>
+					<td th:text="${user.lastName}">Address</td>
+					<td th:text="${user.PhoneNumber}">Phone Number</td>
+					<td th:text="${user.password}">Password</td>
+					<td th:text="${user.amount}">amount</td>
+					<td th:text="${user.townorcity}">townorcity</td>
+					<td th:text="${user.pincode}">pincode</td>
+					<td th:text="${user.stateorregion}">stateorregion</td>
+					
+					
+				<td> <a th:href="@{/showFormForUpdate/{id}(id=${user.id})}" class="btn btn-primary">Update</a>
+					    <a th:href="@{/deleteUser/{id}(id=${user.id})}"  class="btn btn-danger">Delete</a>
+					</td>
+				
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+</body>
+</html>

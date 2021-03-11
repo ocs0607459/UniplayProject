@@ -1,0 +1,303 @@
+ <div class="container text-center">
+	<div>
+		<form th:action="@{/logout}" method="post">
+			<p>
+				Welcome <b>[[${#request.userPrincipal.principal.fullName}]]</b>
+			</p>
+			<input type="submit" value="Sign Out" />
+			
+<head>
+  <meta charset="UTF-8">
+  <title>Heads or Tails </title>
+  <link rel="stylesheet" href="./style.css">
+<style type="text/css">
+  body{
+  margin: 0px;
+  padding: 0px;
+  height: 100%;
+  width: 100%;
+  background-image: url('http://www.ramonhitzeroth.com/Codepen/table-bg.jpg');
+} 
+div{
+   margin: 5%;
+  color: #000;
+  font-size:90px;
+  text-align:center;
+}
+.wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.wrapper .coin-container {
+  width: 150px;
+  height: 150px;
+  position: relative;
+  margin: -30px;
+  right: 90px;
+}
+.wrapper .coin-container .coin-inside {
+  width: 150px;
+  height: 150px;
+  position: relative;
+  border-radius: 100%;
+  transform-style: preserve-3d;
+  cursor: pointer;
+}
+.wrapper .coin-container .coin-inside .coin {
+  position: absolute;
+  backface-visibility: hidden;
+}
+.wrapper .coin-container .coin-inside .coin.heads {
+  transform: rotateY(0deg);
+}
+.wrapper .coin-container .coin-inside .coin.tails {
+  transform: rotateY(180deg);
+}
+ .hero--wrapper { 
+  margin: 0 auto;
+  width: 800px;
+}
+
+h1 {
+  font-weight: 100;
+  font-size: 48px;
+  text-align: center;
+  margin: 25px 0 0 0;
+}
+
+p {
+  text-align: center;
+}
+
+#hero--buttons {
+  margin: 100px auto; 
+  text-align: center;
+  top: 50%;
+}
+
+#finance-btn {
+  width: 250px;
+  height: 50px;
+  background: #003366;
+  border: 0;
+  display: inline-block;
+  margin-right: 10px;
+  color: #fff;
+  font-size: 20px;
+
+}
+
+#refer-btn {
+  width: 250px;
+  height: 50px;
+  background: #003366;
+  border: 0;
+  display: inline-block;
+  color: #fff;
+  font-size: 20px;
+}
+
+#gform_7, #gform_63 {
+  display: none;
+}
+
+#gform_7 {
+  margin: 0 auto;
+  width: 300px;
+  padding: 20px;
+  text-align: center;
+  font-size: 30px;
+  color: #fff;
+  background: #C04000;
+}
+
+#gform_63 {
+  margin: 0 auto;
+  width: 300px;
+  padding: 20px;
+  text-align: center;
+  font-size: 30px;
+   background: #C04000;
+   color: #fff;
+
+}
+
+.i {
+  margin:100px auto;
+
+}
+
+</style>
+</head>
+<body>
+
+<div> <span id="timer"></span></div>
+<div class="wrapper">
+  <div class="coin-container">
+    <div class="coin-inside">
+      <div class="coin heads">
+        <img src="http://www.ramonhitzeroth.com/Codepen/heads-png.png" alt="">
+      </div>
+      <div class="coin tails">
+        <img src="http://www.ramonhitzeroth.com/Codepen/tails-png.png" alt="">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<style type="text/css">
+	label {
+		display: inline-block;
+		width: 200px;
+		margin: 5px;
+		text-align: left;
+	}
+	input[type=radio] {
+		margin-left: 45px;
+		
+
+	}	
+	button {
+		padding: 5px;
+		margin: 10px;
+	}
+</style>
+</head>
+<body>
+	<div align="center">
+		<h1>HEAD OR TAILS</h1>
+		<form action="#" th:action="@{/tossreg}" method="post" th:object="${toss}">
+		 <label>CHOOSE TOSS:</label>
+			<input type="radio" th:field="*{bet}" value="Head" />HEAD
+			<input type="radio" th:field="*{bet}" value="Tails" />TAILS
+			<input type="radio" th:field="*{bet}" value="Nil" />NIL<br>
+		<!--  <label>TOSS:</label>
+			<input type="checkbox" th:field=*{bet}  value="Head"/>HEAD
+			<input type="checkbox" th:field="*{bet}" value="Tails"/>TAILS -->
+			<button type="submit">Submit</button> 		
+		</form>
+	</div>
+	<div align="center">
+		<span>YOU HAVE SELECTED:</span><span th:text="${toss.bet}"></span><br/>
+	</div>
+	
+
+
+<!-- <div class="hero--row">
+  <div class="hero--wrapper">
+   
+         <div id="hero--buttons">
+           <button id="finance-btn">Head</button>
+           <button id="refer-btn">Tails</button>
+         </div>
+            <div class="i">
+              <input type="text" id="gform_7" placeholder="clicked The Head">
+              <input type="text" id="gform_63" placeholder="clicked the Tails">
+            </div>               
+            </div>
+            </div> -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.2/TweenMax.min.js'></script>
+
+<script  src="script.js"></script>
+timer script
+<script type="text/javascript">
+  document.getElementById('timer').innerHTML =
+  002 + ":" + 30;
+startTimer();
+
+function startTimer() {
+  var presentTime = document.getElementById('timer').innerHTML;
+  var timeArray = presentTime.split(/[:]+/);
+  var m = timeArray[0];
+  var s = checkSecond((timeArray[1] - 1));
+  if(s==59){m=m-1}
+  //if(m<0){alert('timer completed')}
+  
+  document.getElementById('timer').innerHTML =
+    m + ":" + s;
+  console.log(m)
+  setTimeout(startTimer, 1000);
+}
+
+function checkSecond(sec) {
+  if (sec < 10 && sec >= 0) {sec = "0" + sec}; // add zero in front of numbers < 10
+  if (sec < 0) {sec = "59"};
+  return sec;
+}
+</script>
+<script>
+  let broker = document.getElementById('refer-btn');
+let brokerShow = document.getElementById('gform_63');
+let borrower = document.getElementById('finance-btn');
+let borrowerShow = document.getElementById('gform_7');
+
+borrower.addEventListener('click', function() {
+    if(borrowerShow.style.display == 'block') {
+      borrowerShow.style.display = 'none';
+      
+    }else {
+      borrowerShow.style.display = 'block';
+      brokerShow.style.display = 'none';
+    }
+  }, false);
+
+
+broker.addEventListener('click', function() {
+    if(brokerShow.style.display == 'block') {
+      brokerShow.style.display = 'none';
+      
+    }else {
+      brokerShow.style.display = 'block';
+      borrowerShow.style.display = 'none';
+    }
+  }, false);
+  </script>
+  <script>
+  let flipping = false;
+
+$('.coin-inside').click(() => {
+  let val = Math.ceil((Math.random() * 100));
+  
+  if(!flipping){
+    flipping = true;
+    let totalFlips = Math.ceil((Math.random() * 2));  
+    
+    TweenMax.to(
+      $('.coin-inside'),
+      2,
+      {
+        ease: SlowMo.ease.config(0.3, 0.9, false), 
+        rotationY: '+='+(180*(10+totalFlips)),
+        scale: 1.7,
+        onComplete: () => {        
+         TweenMax.to(
+          $('.coin-inside'),
+          2,
+          {
+            ease: Power2.easeOut, 
+            rotationY: '+='+(180*(10)),
+            scale: 1,
+            onComplete: () => {
+              flipping = false;
+            }
+          }         
+        )}
+      }
+    );
+    
+  }
+  
+});
+</script>
+</body>
+
+			
+		</form>
+	</div> 

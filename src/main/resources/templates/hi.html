@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>HEAD OR TAILS</title>
+<style type="text/css">
+	label {
+		display: inline-block;
+		width: 200px;
+		margin: 5px;
+		text-align: left;
+	}
+	input[type=radio] {
+		margin-left: 45px;
+		
+
+	}	
+	button {
+		padding: 5px;
+		margin: 10px;
+	}
+</style>
+</head>
+<body>
+	<div align="center">
+		<h1>HEAD OR TAILS</h1>
+		<form action="#" th:action="@{/tossreg}" method="post" th:object="${toss}">
+		 <label>CHOOSE TOSS:</label>
+			<input type="radio" th:field="*{bet}" value="Head" />HEAD
+			<input type="radio" th:field="*{bet}" value="Tails" />TAILS
+			<input type="radio" th:field="*{bet}" value="Nil" />NIL<br>
+		<!--  <label>TOSS:</label>
+			<input type="checkbox" th:field=*{bet}  value="Head"/>HEAD
+			<input type="checkbox" th:field="*{bet}" value="Tails"/>TAILS -->
+			<button type="submit">Submit</button> 		
+		</form>
+	</div>
+	<div align="center">
+		<span>YOU HAVE SELECTED:</span><span th:text="${toss.bet}"></span><br/>
+	</div>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
